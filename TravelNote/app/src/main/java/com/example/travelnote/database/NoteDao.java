@@ -4,8 +4,9 @@ package com.example.travelnote.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;
 import android.util.Log;
+
 
 import com.example.travelnote.model.Note;
 
@@ -22,7 +23,8 @@ public class NoteDao {
     }
 
     public void open() {
-        database = dbHelper.getWritableDatabase();
+        byte[] passphrase = SQLiteDatabase.getBytes("my_secure_password".toCharArray());
+        database = dbHelper.getEncryptedWritableDatabase(passphrase);
     }
 
     public void close() {

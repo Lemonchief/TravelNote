@@ -42,5 +42,8 @@ dependencies {
     implementation(libs.maps.mobile)
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("net.zetetic:android-database-sqlcipher:4.5.3@aar")
+    implementation ("androidx.sqlite:sqlite:2.3.1")
+
 
 }

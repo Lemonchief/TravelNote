@@ -2,8 +2,9 @@
 package com.example.travelnote.database;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteOpenHelper;
 
 public class NoteDatabaseHelper extends SQLiteOpenHelper {
 
@@ -30,6 +31,11 @@ public class NoteDatabaseHelper extends SQLiteOpenHelper {
 
     public NoteDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        SQLiteDatabase.loadLibs(context);
+    }
+
+    public SQLiteDatabase getEncryptedWritableDatabase(byte[] passphrase) {
+        return getWritableDatabase(passphrase);
     }
 
     @Override
